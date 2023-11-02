@@ -1,0 +1,21 @@
+<%- include('partials/_header'); %>
+
+<h2>Algunos de nuestros productos</h2>
+<div id="productos" class="contProductos">
+    <%if (data) {%>
+        <%for(var i = 0; i<data.length; i++){ %>
+            <div class=''>
+                <div class='producto'>
+                    <a href='/product/<%= data[i].id_product %>'>
+                        <img src='<%= data[i].url %>'>
+                    </a>
+                    <h6><%= data[i].name %></h6> 
+                    <h6><%= data[i].description %></h6>  
+                    <h6><sup>₡</sup><%= data[i].price %></h6>
+                </div>
+            </div>
+        <%}%>
+    <%}%>          
+</div>
+
+<%- include('partials/_footer'); %>

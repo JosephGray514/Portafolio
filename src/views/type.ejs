@@ -1,0 +1,51 @@
+<%- include('partials/_header'); %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>n</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%if (data) {%>
+                        <%for(var i = 0; i<data.length; i++){ %>
+                            <tr>
+                                <td><%= (i+1) %></td>
+                                <td><%= data[i].id %></td>
+                                <td><%= data[i].name %></td>
+                                <td>
+                                    <a href="#" class="btn btn-danger">DELETE</a>
+                                    <a href="#" class="btn btn-info">UPDATE</a>
+                                </td>
+                            </tr>     
+                        <%}%>
+                    <%}%>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="type/insert" method="post">
+                        <div class="form-group m-3" >
+                            <input type="text" name="name" placeholder="Name" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary m-3">
+                            SAVE CUSTOMER
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/_footer'); %>

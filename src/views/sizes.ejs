@@ -1,0 +1,58 @@
+<%- include('partials/_header'); %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>n</th>
+                        <th>Size</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%if (data) {%>
+                        <%for(var i = 0; i<data.s.length; i++){ %>
+                            <tr>
+                                <td><%= (i+1) %></td>
+                                <td><%= data.s[i].size %></td>
+                                <td><%= data.s[i].name %></td>
+                                <td>
+                                    <a href="#" class="btn btn-danger">DELETE</a>
+                                    <a href="#" class="btn btn-info">UPDATE</a>
+                                </td>
+                            </tr>     
+                        <%}%>
+                    <%}%>   
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="sizes/insert" method="post">
+                        <div class="form-group m-3" >
+                            <input type="text" name="size" placeholder="Size" class="form-control">
+                        </div>
+                        <h6>Type</h6>
+                        <select class="form-select" aria-label="Default select example" name="id_type">
+                            <%if (data) {%>
+                                <%for(var i = 0; i<data.t.length; i++){ %>
+                                    <option selected value="<%= data.t[i].id %>"><%= data.t[i].name %></option>
+                                <%}%>
+                            <%}%>
+                        </select>
+                        <button type="submit" class="btn btn-primary m-3">
+                            SAVE SIZE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('partials/_footer'); %>

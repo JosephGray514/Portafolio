@@ -1,0 +1,144 @@
+/* ................................................................ */
+.containerC {
+    width : 100%;
+    align-items : center;
+    justify-content : center;
+    flex-wrap : wrap;
+    display: flex;
+    /* padding : 70px;   */
+    padding-top: 50px;
+}
+.contenidaImagen {
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+}  
+.contenidaInfo {
+    text-align: left;
+    justify-content: center;
+    padding: 50px;   
+    width: 500px;
+    height: 900px;
+}
+.contenidaInfo h6{
+    padding: 20px;
+    text-align: center;
+}
+.tallas{
+    flex-wrap : wrap;
+    display: flex;
+    justify-content: center;
+    /* padding: 10px; */
+    width: 100%;
+    margin-bottom: 50px;
+  }
+.talla{
+    color: #33475b;
+    justify-content: center;
+    background-color: rgb(237, 236, 236);
+    text-align: center;
+    height: 40px;
+    width: 25%;
+    margin: 10px;
+    top : -500px;
+    border-radius: 5px;
+    padding-top: 9px;
+}
+.talla:hover{
+    border: 1px solid #000;
+}
+.info{
+    text-align: left;
+    margin-bottom:50px;
+    margin-top:50px;
+}
+.global {
+	overflow-y: scroll;
+}
+h6{
+    margin: 10px;
+}
+h5{
+  padding-top: 30px;
+}
+._b{
+    text-decoration: none; 
+    color: white;
+    background-color: black;
+    border-radius: 30px;
+    width: 20%;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+._bC{
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+}
+._b:hover{
+    background-color: rgb(223, 221, 221);
+    text-decoration: none;
+    color: black;
+}
+
+.containerT{
+    height: 150px;
+    flex-wrap : wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.sizes{
+    padding: 50px;
+}
+
+/* ................................................................ */
+
+/*  Carousel-1 */
+.carousel {
+    max-height: 100%;
+    max-width: 700px;
+  }
+  .carousel-item {
+    background: no-repeat center center scroll;
+    overflow: hidden;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .carousel-item img{
+    width: 100%;
+  }
+  .carousel-control-next,
+  .carousel-control-prev {
+    filter: invert(100%);
+  }
+  .carousel-control-prev, .carousel-control-next {
+      height: 44px;
+      width: 44px;
+      background: #040000;	
+      margin: auto 0;
+      border-radius: 50px;
+      opacity:1;
+  }
+  .carousel-control-prev:hover, .carousel-control-next:hover {
+      background: #000000;
+      opacity: 0.1;
+  }
+
+  .btnC_{
+    text-decoration: none; 
+    color: white;
+    background-color: black;
+    border-radius: 30px;
+    width: 100%;
+}
+.btnC_:hover{
+    background-color: rgb(223, 221, 221);
+    text-decoration: none;
+}
+  /*  Carousel-1 */

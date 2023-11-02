@@ -1,0 +1,66 @@
+<%- include('partials/_header'); %>
+
+<div class="container">
+    <form action="insertProduct/insert" method="post">
+        <div class="row mt-5">
+            <div class="col-md-7">
+                <div class="form-group m-3" >
+                    <input type="text" name="name" placeholder="Name" class="form-control">
+                </div>
+                <div class="form-group m-3" >
+                    <input type="text" name="description" placeholder="Description" class="form-control">
+                </div>
+                <div class="form-group m-3" >
+                    <input type="text" name="information" placeholder="Information" class="form-control">
+                </div>
+                <div class="form-group m-3" >
+                    <input type="text" name="price" placeholder="Price" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h6>Choose the catalogues that you want your product to be in</h3>
+                <div class="containerT global">
+                    <%if (data) {%>
+                        <%for(var i = 0; i<data.c.length; i++){ %>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="catalogues" type="checkbox" id="" value="<%= data.c[i].id %>">
+                                    <label class="form-check-label" for="inlineCheckbox1"><%= data.c[i].name %></label>
+                                </div>
+                        <%}%>
+                    <%}%>
+                </div>                    
+            </div>
+        </div>
+
+        <!-- <div class="row mt-5"> -->
+            <!-- <div class="col-md-7"> -->
+            <div class="sizes">    
+                <h6>Choose the sizes for your product</h3>
+                <div class="containerT global">
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="sizes" type="checkbox" id="" value="" on>
+                            <label class="form-check-label" for="inlineCheckbox1">EU 44.5</label>
+                        </div>
+                        <div class="form-group m-3" >
+                            <input type="text" name="quantity" placeholder="Quantity" class="form-control" disabled>
+                        </div> 
+                    </div>
+                    
+                    
+                </div>
+            </div>    
+            <!-- </div> -->
+            <!-- <div class="col-md-5">
+                <div class="form-group m-3" >
+                    <input type="text" name="quantity" placeholder="Quantity" class="form-control">
+                </div>     
+            </div> -->
+        <!-- </div> -->
+        <button type="submit" class="btn btn-primary m-3">
+            SAVE PRODUCT
+        </button>
+    </form>
+</div>
+
+<%- include('partials/_footer'); %>
