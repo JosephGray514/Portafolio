@@ -2,47 +2,53 @@ const controller = {};
 
 controller.insert = (req, res) => {
     const data = req.body;
-    // console.log("Data with the catalogue :"+data)
-    // console.log("Catalogue :"+data.catalogues)
+    console.log("Data with the catalogue :");
+    console.log(data)
+    console.log("Catalogue :");
+    console.log(data.catalogues)
     let cat = data.catalogues;
     let key = "catalogues";
     delete data[key];
-    // console.log("Data with out the catalogue :"+data)
-    // console.log(" Catalogue : "+cat)
+    console.log("Data with out the catalogue :")
+    console.log(data)
+    console.log(" Catalogue : ")
+    console.log(cat)
 
     var idP;
 
-    req.getConnection((err, conn) =>{
-        conn.query('INSERT INTO product set ?', [data], (err, products) => {
-            if(err){
-                res.json(err);
-            }else{
-                // console.log(products);
-            }
-        });
-        conn.query('SELECT MAX(id) AS last_id FROM product;', (err, id) => {
-            if(err){
-                res.json(err);
-            }else{
-                idP = id[0].last_id;
-                console.log("ID of the last inserted product : " + idP);
-                console.log("ID of the last inserted product 'out of the query' : "+idP);
-                for (let i = 0; i < cat.length; i++) {
-                    conn.query('INSERT INTO product_catalogue (id_product, id_catalogue) VALUES (?,?);',[idP,parseInt(cat[i])], (err, pc) => {
-                        if(err){
-                            res.json(err);
-                        }else{
-                            console.log('Inserted');
-                        }
-                    });
-                }
-            }
-        });
-    });
+    // req.getConnection((err, conn) =>{
+    //     conn.query('INSERT INTO product set ?', [data], (err, products) => {
+    //         if(err){
+    //             res.json(err);
+    //         }else{
+    //             // console.log(products);
+    //         }
+    //     });
+    //     conn.query('SELECT MAX(id) AS last_id FROM product;', (err, id) => {
+    //         if(err){
+    //             res.json(err);
+    //         }else{
+    //             idP = id[0].last_id;
+    //             console.log("ID of the last inserted product : " + idP);
+    //             console.log("ID of the last inserted product 'out of the query' : "+idP);
+    //             for (let i = 0; i < cat.length; i++) {
+    //                 conn.query('INSERT INTO product_catalogue (id_product, id_catalogue) VALUES (?,?);',[idP,parseInt(cat[i])], (err, pc) => {
+    //                     if(err){
+    //                         res.json(err);
+    //                     }else{
+    //                         console.log('Inserted');
+    //                     }
+    //                 });
+    //             }
+    //         }
+    //     });
+    // });
 };
 
 controller.select = (req, res)=>{
     let c;
+    let t;
+    let a = [];
     req.getConnection((err, conn)=>{
         conn.query('SELECT * FROM catalogue', (err, catalogues) =>{
             if(err){
@@ -50,12 +56,39 @@ controller.select = (req, res)=>{
             }
             c = catalogues
             console.log(c);
-            res.render('insertProduct', {
-                data: {
-                    c: c
-                }
-            })
         });
+
+        conn.query('SELECT * FROM type', (err, types) =>{
+            if(err){
+                res.json(err);
+            }
+            t = types;
+            console.log('types');
+            console.log(t);
+            for (let i = 0; i < t.length; i++) {
+                conn.query('SELECT * FROM sizes WHERE id_type = ?',[t[i].id], (err, sizes) =>{
+                    if(err){
+                        res.json(err);
+                    }
+                    a.push(sizes);
+                    if((i+1) == t.length){
+                        console.log(a)
+                        res.render('insertProduct', {
+                            data: {
+                                c: c,
+                                t: t,
+                                a: a
+                            }
+                        })
+                    }
+                });       
+            }
+
+            
+        });
+
+        
+
     });
 };
 

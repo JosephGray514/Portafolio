@@ -82,4 +82,5 @@ describe product_sizes;
 
 
 
-
+<%for(var j = 1; j<data.a.length; j++){ %>
+<%}%>

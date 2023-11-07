@@ -7,7 +7,7 @@ const myConnection = require('express-myconnection');
 const app = express();
 
 // importing routes  **********
-// const indexRoutes = require('./routes/index');
+const indexRoutes = require('./routes/index');
 const productRoutes = require('./routes/product');
 const sizesRoutes = require('./routes/sizes');
 const typeRoutes = require('./routes/type')
@@ -32,7 +32,7 @@ app.use(express.urlencoded({extended: false}));
 
 
 // routes  **********
-// app.use('/',indexRoutes);
+app.use('/',indexRoutes);
 app.use('/product',productRoutes)
 app.use('/sizes',sizesRoutes)
 app.use('/type',typeRoutes)

@@ -95,6 +95,28 @@ h5{
     padding: 50px;
 }
 
+.quantity{
+    width: 75px;
+}
+
+.size{
+    padding: 5px;
+}
+
+.put{
+    padding: 10px;
+}
+
+.cont_sizes{
+    justify-content: center;
+    text-align: center;
+}
+
+.carousel_sizes {
+    height: 300px;
+    
+  }
+
 /* ................................................................ */
 
 /*  Carousel-1 */
