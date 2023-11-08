@@ -4,6 +4,18 @@ body {
 
 /* PRODUCTOS */
 
+.img_carousel{
+  padding: 10px;
+}
+
+.title{
+  position: absolute;
+  left: 20px;
+}
+
+
+/* PRODUCTOS */
+
 /* Carousel */
 @media (max-width: 767px) {
     .carousel-inner .carousel-item > div {
