@@ -14,7 +14,7 @@
                     <input type="text" name="information" placeholder="Information" class="form-control">
                 </div>
                 <div class="form-group m-3" >
-                    <input type="text" name="price" placeholder="Price" class="form-control">
+                    <input type="number" name="price" placeholder="Price" class="form-control">
                 </div>
             </div>
             <div class="col-md-5">
@@ -31,10 +31,6 @@
                 </div>                    
             </div>
         </div>
-
-        <h1>  </h1>
-        
-
         
                 <div id="carouselExampleIndicators" class="carousel slide carousel_sizes" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -46,11 +42,11 @@
                                             <%for(var j = 0; j<data.a[0].length; j++){ %>
                                                 <div class="form-check form-check-inline size">
                                                     <div class="put">
-                                                        <input class="form-check-input" name="sizes" type="checkbox" id="" value="<%= data.a[0][j].id %>" >
+                                                        <input class="form-check-input" name="sizes" type="checkbox" id="<%= data.a[0][j].id %>" value="<%= data.a[0][j].id %>" onclick="checkbox('<%= data.a[0][j].id %>', '_<%= data.a[0][j].id %>')">
                                                         <label class="form-check-label" for="inlineCheckbox1"> <%= data.a[0][j].size %>  </label>
                                                     </div>
                                                     <div class="put">
-                                                        <input class="quantity" type="text" name="quantity" placeholder="Quantity" class="form-control" >
+                                                        <input class="quantity hidden" id="_<%= data.a[0][j].id %>" type="number" name="quantity" placeholder="Quantity" class="form-control" disabled>
                                                     </div>
                                                 </div>
                                         <%}%>
@@ -66,11 +62,11 @@
                                                 <%for(var j = 0; j<data.a[i].length; j++){ %>
                                                     <div class="form-check form-check-inline size">
                                                         <div class="put">
-                                                            <input class="form-check-input" name="sizes" type="checkbox" id="" value="<%= data.a[i][j].size %>" >
+                                                            <input class="form-check-input" name="sizes" type="checkbox" id="<%= data.a[i][j].id %>" value="<%= data.a[i][j].id %>" onclick="checkbox('<%= data.a[i][j].id %>', '_<%= data.a[i][j].id %>')">
                                                             <label class="form-check-label" for="inlineCheckbox1"> <%= data.a[i][j].size %>  </label>
                                                         </div>
                                                         <div class="put">
-                                                            <input class="quantity" type="text" name="quantity" placeholder="Quantity" class="form-control" >
+                                                            <input class="quantity hidden" id="_<%= data.a[i][j].id %>" type="number" name="quantity" placeholder="Quantity" class="form-control" disabled>
                                                         </div>
                                                     </div>
                                                 <%}%>
@@ -115,5 +111,19 @@
         </button>
     </form>
 </div>
+
+<script>
+    function checkbox(idCheckbox, idInput){
+        const cb = document.getElementById(idCheckbox);
+        const input = document.getElementById(idInput);
+        if (cb.checked == true) {
+            input.classList.remove('hidden')
+            input.disabled = false;
+        }else{
+            input.classList.add('hidden')
+            input.disabled = true;
+        }
+    }
+</script>
 
 <%- include('partials/_footer'); %>

@@ -1,3 +1,8 @@
+body {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+
 /* ................................................................ */
 .containerC {
     width : 100%;
@@ -99,12 +104,17 @@ h5{
     width: 75px;
 }
 
+.hidden{
+    visibility: hidden;
+}
+
 .size{
     padding: 5px;
 }
 
 .put{
     padding: 10px;
+
 }
 
 .cont_sizes{
@@ -121,8 +131,7 @@ h5{
 
 /*  Carousel-1 */
 .carousel {
-    max-height: 100%;
-    max-width: 700px;
+    width: 100%;
   }
   .carousel-item {
     background: no-repeat center center scroll;
@@ -141,26 +150,26 @@ h5{
   }
   .carousel-control-prev, .carousel-control-next {
       height: 44px;
-      width: 44px;
-      background: #040000;	
+      width: 43px;
+      background: #000000;	
       margin: auto 0;
       border-radius: 50px;
       opacity:1;
   }
   .carousel-control-prev:hover, .carousel-control-next:hover {
-      background: #000000;
+      background: #7d7d7d;
       opacity: 0.1;
   }
 
-  .btnC_{
+  /* .btnC_{
     text-decoration: none; 
-    color: white;
+    color: rgb(0, 0, 0);
     background-color: black;
     border-radius: 30px;
     width: 100%;
-}
+} */
 .btnC_:hover{
-    background-color: rgb(223, 221, 221);
+    background-color: rgb(255, 25, 25);
     text-decoration: none;
 }
   /*  Carousel-1 */

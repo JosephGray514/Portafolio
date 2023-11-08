@@ -14,35 +14,57 @@ controller.insert = (req, res) => {
     console.log(" Catalogue : ")
     console.log(cat)
 
-    var idP;
+    let sizes = data.sizes;
+    let quantity = data.quantity;
+    let keyS = "sizes";
+    let keyQ = "quantity";
+    delete data[keyS];
+    delete data[keyQ];
+    console.log(data)
+    console.log(sizes)
+    console.log(quantity)
 
-    // req.getConnection((err, conn) =>{
-    //     conn.query('INSERT INTO product set ?', [data], (err, products) => {
-    //         if(err){
-    //             res.json(err);
-    //         }else{
-    //             // console.log(products);
-    //         }
-    //     });
-    //     conn.query('SELECT MAX(id) AS last_id FROM product;', (err, id) => {
-    //         if(err){
-    //             res.json(err);
-    //         }else{
-    //             idP = id[0].last_id;
-    //             console.log("ID of the last inserted product : " + idP);
-    //             console.log("ID of the last inserted product 'out of the query' : "+idP);
-    //             for (let i = 0; i < cat.length; i++) {
-    //                 conn.query('INSERT INTO product_catalogue (id_product, id_catalogue) VALUES (?,?);',[idP,parseInt(cat[i])], (err, pc) => {
-    //                     if(err){
-    //                         res.json(err);
-    //                     }else{
-    //                         console.log('Inserted');
-    //                     }
-    //                 });
-    //             }
-    //         }
-    //     });
-    // });
+    
+
+    req.getConnection((err, conn) =>{
+        let idP;
+
+        let p;
+        conn.query('INSERT INTO product set ?', [data], (err, products) => {
+            if(err){
+                res.json(err);
+            }else{
+                conn.query('SELECT MAX(id) AS last_id FROM product;', (err, id) => {
+                    if(err){
+                        res.json(err);
+                    }else{
+                        idP = id[0].last_id;
+                        console.log("ID of the last inserted product : " + idP);
+                        console.log("ID of the last inserted product 'out of the query' : "+idP);
+                        for (let i = 0; i < cat.length; i++) {
+                            conn.query('INSERT INTO product_catalogue (id_product, id_catalogue) VALUES (?,?);',[idP,parseInt(cat[i])], (err, pc) => {
+                                if(err){
+                                    res.json(err);
+                                }else{
+                                    console.log('Inserted');
+                                }
+                            });
+                        }
+                        for(let i = 0; i < sizes.length; i++){
+                            conn.query('INSERT INTO product_sizes (id_product, id_sizes, status, quantity) VALUES (?,?,?,?);',[idP,parseInt(sizes[i]),1,parseInt(quantity[i])], (err, pc) => {
+                                if(err){
+                                    res.json(err);
+                                }else{
+                                    console.log('Inserted');
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        
+    });
 };
 
 controller.select = (req, res)=>{
@@ -83,12 +105,7 @@ controller.select = (req, res)=>{
                     }
                 });       
             }
-
-            
         });
-
-        
-
     });
 };
 
