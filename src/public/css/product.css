@@ -66,6 +66,7 @@ h6{
 h5{
   padding-top: 30px;
 }
+/* --------------------------------NEW------------------------------- */
 ._b{
     text-decoration: none; 
     color: white;
@@ -124,9 +125,28 @@ h5{
 
 .carousel_sizes {
     height: 300px;
-    
-  }
+}
 
+.title{
+    padding-top: 10px;
+    position: absolute;
+    left: 20px;
+}
+.containerP{
+    width : 100%;
+    align-items : center;
+    justify-content : center;
+    flex-wrap : wrap;
+    display: flex;
+    /* padding : 70px;   */
+    padding-top: 50px;
+}
+
+.containerP img{
+    width: 400px;
+    height: 500px;
+    padding: 10px;
+}
 /* ................................................................ */
 
 /*  Carousel-1 */
@@ -172,4 +192,9 @@ h5{
     background-color: rgb(255, 25, 25);
     text-decoration: none;
 }
+
+.carousel { overflow: hidden; }
+
+
+.item { overflow: hidden; }
   /*  Carousel-1 */

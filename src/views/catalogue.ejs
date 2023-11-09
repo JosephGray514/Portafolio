@@ -1,0 +1,22 @@
+<%- include('partials/_header'); %>
+<%if (data.p) {%>
+    <h2 class="title"><%= data.p[0].catalogue %></h6>
+<%}%>
+<div class="containerP">
+<%if (data.p) {%>
+    <%for(var i = 0; i<data.p.length; i++){ %>
+        <div class=''>
+            <div class='producto'>
+                <a href='/product/<%= data.p[i].id %>'>
+                    <img src='/<%= data.p[i].url %>'>
+                </a>
+                <h6><%= data.p[i].name %></h6> 
+                <h6><%= data.p[i].description %></h6>  
+                <h6><sup>₡</sup><%= data.p[i].price %></h6>
+            </div>
+        </div>
+    <%}%>
+<%}%> 
+</div>
+
+<%- include('partials/_footer'); %>

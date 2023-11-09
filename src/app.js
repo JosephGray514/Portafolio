@@ -12,6 +12,7 @@ const productRoutes = require('./routes/product');
 const sizesRoutes = require('./routes/sizes');
 const typeRoutes = require('./routes/type')
 const insertProduct = require('./routes/insertProduct')
+const catalogue = require('./routes/catalogue')
 
 
 // setting
@@ -37,6 +38,7 @@ app.use('/product',productRoutes)
 app.use('/sizes',sizesRoutes)
 app.use('/type',typeRoutes)
 app.use('/insertProduct',insertProduct)
+app.use('/catalogue',catalogue)
 
 
 // static files  **********

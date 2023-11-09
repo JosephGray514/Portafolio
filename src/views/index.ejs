@@ -78,7 +78,7 @@
                             <div class="col-md-3">
                                 <div class="">
                                     <div class="card-img img_carousel">
-                                        <a href="/product/<%= data.c[0].id %>">
+                                        <a href="/catalogue/<%= data.c[0].id %>">
                                             <img src="<%= data.c[0].imgUrl %>" class="img-fluid">
                                         </a>
                                     </div>
@@ -91,7 +91,7 @@
                                 <div class="col-md-3">
                                     <div class="">
                                         <div class="card-img img_carousel">
-                                            <a href="/product/<%= data.c[i].id %>">
+                                            <a href="/catalogue/<%= data.c[i].id %>">
                                                 <img src="<%= data.c[i].imgUrl %>" class="img-fluid">
                                             </a>
                                         </div>
@@ -115,7 +115,7 @@
 
 
 <script>
-    let items = document.querySelectorAll('.carousel .carousel-item')
+    let items = document.querySelectorAll('.carousel .carousel-item ')
 
 
     items.forEach((el) => {
