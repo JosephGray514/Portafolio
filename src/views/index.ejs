@@ -15,6 +15,7 @@
         <%}%>
     <%}%>          
 
+    
 
 <%if (data.c) {%>
 
@@ -70,9 +71,10 @@
         <h2 class="font-weight-light title">Nuestros catalogos</h2>
         <br>
         <br>
-        <div class="container text-center ">
+        <div class="container text-center">
             <div class="row mx-auto my-auto justify-content-center">
                 <div id="recipeCarousel2" class="carousel slide" data-bs-ride="carousel">
+                    
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <div class="col-md-3">
@@ -115,8 +117,8 @@
 
 
 <script>
-    let items = document.querySelectorAll('.carousel .carousel-item ')
-
+    let items = document.getElementById('recipeCarousel').querySelectorAll('.carousel .carousel-item ')
+    console.log(items)
 
     items.forEach((el) => {
         const minPerSlide = 4
@@ -132,5 +134,22 @@
         }
     })
 </script>
+<script>
+    let items2 = document.getElementById('recipeCarousel2').querySelectorAll('.carousel .carousel-item ')
+    console.log(items2)
 
+    items2.forEach((el) => {
+        const minPerSlide = 4
+        let next2 = el.nextElementSibling
+        for (var i=1; i<minPerSlide; i++) {
+            if (!next2) {
+                // wrap carousel by using first child
+                next2 = items2[0]
+            }
+            let cloneChild2 = next2.cloneNode(true)
+            el.appendChild(cloneChild2.children[0])
+            next2= next2.nextElementSibling
+        }
+    })
+</script>
 <%- include('partials/_footer'); %>

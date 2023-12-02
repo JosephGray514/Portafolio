@@ -5,6 +5,7 @@ controller.info = (req, res) =>{
     let p;
     let i;
     let s;
+    let rp;
     req.getConnection((err, conn)=> {
         conn.query('SELECT * FROM product WHERE id = ?',[id], (err, products) =>{
             if(err){
@@ -33,17 +34,25 @@ controller.info = (req, res) =>{
             }else{
                 s = sizes
                 console.log(s);
+            }
+        });
+        
+        conn.query('SELECT p.id, name, description, price, MAX(url) AS url FROM product AS p INNER JOIN img AS i ON p.id = i.id_product GROUP BY p.id, name, description, price ORDER BY RAND() LIMIT 8;', (err, randProducts) =>{
+            if(err){
+                res.json(err);
+            }else{
+                rp = randProducts
+                console.log(rp);
                 res.render('product', {
                     data: {
                         p: p,
                         i: i,
-                        s: s
+                        s: s,
+                        rp: rp
                     }
                 });
             }
         });
-
-        
     });
 };
 

@@ -1,5 +1,6 @@
 body {
     font-family: 'Lexend Deca', sans-serif;
+    width: 100%;
 }
 
 
@@ -90,68 +91,71 @@ h5{
     color: black;
 }
 
+
 .containerT{
     height: 150px;
     flex-wrap : wrap;
     display: flex;
     justify-content: center;
 }
-
-.sizes{
+.centrar{
+    justify-content: center;
+}
+.cont_sizes{
+    justify-content: center;
+    text-align: center;
     padding: 50px;
 }
-
 .quantity{
     width: 75px;
 }
-
 .hidden{
     visibility: hidden;
 }
 
-.size{
-    padding: 5px;
-}
-
-.put{
-    padding: 10px;
-
-}
-
-.cont_sizes{
-    justify-content: center;
-    text-align: center;
-}
-
-.carousel_sizes {
-    height: 300px;
-}
 
 .title{
     padding-top: 10px;
     position: absolute;
     left: 20px;
 }
-.containerP{
-    width : 100%;
-    align-items : center;
-    justify-content : center;
-    flex-wrap : wrap;
-    display: flex;
-    /* padding : 70px;   */
+.container{
+    /* justify-content: center; */
     padding-top: 50px;
+    /* justify-content: right; */
 }
 
-.containerP img{
+.prueba{
+    justify-content: center;
+    flex-wrap : wrap;
+    display: flex;
+}
+.container img{
     width: 400px;
     height: 500px;
     padding: 10px;
+}
+
+.img_carousel{
+    padding: 10px;
+  }
+
+.archivos{
+    text-align: center;
+    justify-content: center;
+    /* padding: 30px; */
+}
+.archivo{
+    text-align: center;
+    justify-content: center;
+    /* padding: 30px; */
 }
 /* ................................................................ */
 
 /*  Carousel-1 */
 .carousel {
-    width: 100%;
+    max-height: 100%;
+    max-width: 700px;
   }
   .carousel-item {
     background: no-repeat center center scroll;
@@ -192,9 +196,44 @@ h5{
     background-color: rgb(255, 25, 25);
     text-decoration: none;
 }
+/*  Carousel-1 */
 
-.carousel { overflow: hidden; }
+/* Carousel Bottom Product*/
+@media (max-width: 799px) {
+    section .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    section .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
 
+section .carousel-inner .carousel-item.active,
+section .carousel-inner .carousel-item-next,
+section .carousel-inner .carousel-item-prev {
+    display: flex;
+}
 
-.item { overflow: hidden; }
-  /*  Carousel-1 */
+/* medium and up screens */
+@media (min-width: 798px) {
+    section .carousel-inner .carousel-item-end.active,
+    section .carousel-inner .carousel-item-next {
+      transform: translateX(25%);
+    }
+    
+    section .carousel-inner .carousel-item-start.active, 
+    section .carousel-inner .carousel-item-prev {
+      transform: translateX(-25%);
+    }
+
+    section .carousel-inner .carousel-item-end,
+    section .carousel-inner .carousel-item-start { 
+      transform: translateX(0);
+    }
+    .recipeCarousel1 {
+        padding: 10px;
+        width:1000px;
+    } 
+}
+
+/* Carousel Bottom Product */

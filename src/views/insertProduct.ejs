@@ -1,7 +1,7 @@
 <%- include('partials/_header'); %>
 
 <div class="container">
-    <form action="insertProduct/insert" method="post">
+    <form action="insertProduct/insert" method="POST" enctype="multipart/form-data">
         <div class="row mt-5">
             <div class="col-md-7">
                 <div class="form-group m-3" >
@@ -32,50 +32,50 @@
             </div>
         </div>
         
-                <div id="carouselExampleIndicators" class="carousel slide carousel_sizes" data-bs-ride="carousel">
+        <div class="row mt-5 centrar"> 
+            <div class="col-md-5">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        
-                            <div class="carousel-item active cont_sizes">
-                                <%if (data.t) {%>
-                                    <div class="cont_sizes">
-                                        <h6><%= data.t[0].name %></h6>
+                            <div class="carousel-item active ">
+                                <%if (data.t) {%>                       
+                                    <div class="cont_sizes ">   
+                                            <h6><%= data.t[0].name %></h6>                   
                                             <%for(var j = 0; j<data.a[0].length; j++){ %>
-                                                <div class="form-check form-check-inline size">
-                                                    <div class="put">
+                                                <div class="form-check form-check-inline ">
+                                                    <div class="">
                                                         <input class="form-check-input" name="sizes" type="checkbox" id="<%= data.a[0][j].id %>" value="<%= data.a[0][j].id %>" onclick="checkbox('<%= data.a[0][j].id %>', '_<%= data.a[0][j].id %>')">
                                                         <label class="form-check-label" for="inlineCheckbox1"> <%= data.a[0][j].size %>  </label>
                                                     </div>
-                                                    <div class="put">
+                                                    <div class="">
                                                         <input class="quantity hidden" id="_<%= data.a[0][j].id %>" type="number" name="quantity" placeholder="Quantity" class="form-control" disabled>
                                                     </div>
                                                 </div>
-                                        <%}%>
+                                            <%}%>
                                     </div>
                                 <%}%>
                             </div>
-                       
-                            <%if (data.t) {%>
-                                <%for(var i = 1; i<data.a.length; i++){ %>
-                                        <div class="carousel-item cont_sizes">  
-                                            <div class="cont_sizes">
-                                                <h6><%= data.t[i].name %></h6>
-                                                <%for(var j = 0; j<data.a[i].length; j++){ %>
-                                                    <div class="form-check form-check-inline size">
-                                                        <div class="put">
-                                                            <input class="form-check-input" name="sizes" type="checkbox" id="<%= data.a[i][j].id %>" value="<%= data.a[i][j].id %>" onclick="checkbox('<%= data.a[i][j].id %>', '_<%= data.a[i][j].id %>')">
-                                                            <label class="form-check-label" for="inlineCheckbox1"> <%= data.a[i][j].size %>  </label>
-                                                        </div>
-                                                        <div class="put">
-                                                            <input class="quantity hidden" id="_<%= data.a[i][j].id %>" type="number" name="quantity" placeholder="Quantity" class="form-control" disabled>
-                                                        </div>
-                                                    </div>
-                                                <%}%>
-                                            </div>     
+                    <%if (data.t) {%>
+                        <%for(var i = 1; i<data.a.length; i++){ %>
+                            <div class="carousel-item ">  
+                                <div class="cont_sizes ">  
+                                    <h6><%= data.t[i].name %></h6>               
+                                    <%for(var j = 0; j<data.a[i].length; j++){ %>
+                                        <div class="form-check form-check-inline  ">
+                                            <div class="">
+                                                <input class="form-check-input" name="sizes" type="checkbox" id="<%= data.a[i][j].id %>" value="<%= data.a[i][j].id %>" onclick="checkbox('<%= data.a[i][j].id %>', '_<%= data.a[i][j].id %>')">
+                                                <label class="form-check-label" for="inlineCheckbox1"> <%= data.a[i][j].size %>  </label>
+                                            </div>
+                                            <div class="">
+                                                <input class="quantity hidden" id="_<%= data.a[i][j].id %>" type="number" name="quantity" placeholder="Quantity" class="form-control" disabled>
+                                            </div>
                                         </div>
-                                <%}%>
-                            <%}%>
-                        </div>
-                       
+                                    <%}%>
+                                </div>     
+                            </div>
+                        <%}%>
+                    <%}%>
+                    </div>  
+                            
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -85,26 +85,38 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-        
+            </div>       
 
-            <!-- <div class="sizes">    
-                <h6>Choose the sizes for your product</h3>
-                <div class="containerT global">
-                    <%if (data.s) {%>
-                        <%for(var i = 0; i<data.s.length; i++){ %>
-                            <div class="form-check form-check-inline size">
-                                <div class="put">
-                                    <input class="form-check-input" name="sizes" type="checkbox" id="" value="<%= data.s[i].id %>" >
-                                    <label class="form-check-label" for="inlineCheckbox1"><%= data.s[i].size %></label>
-                                </div>
-                                <div class="put">
-                                    <input class="quantity" type="text" name="quantity" placeholder="Quantity" class="form-control" >
-                                </div>
+            <div class="col-md-5">
+                <div class="archivos">
+                    <h6>Max number of images 10</h3>
+                    <div id="carouselExampleIndicatorsImg" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active archivo">
+                                <input type="file" name="file" id="1" ><br>1<br>
+                                <input type="file" name="file" id="1" multiple><br>1<br>
                             </div>
-                        <%}%>
-                    <%}%>
+            
+                            <%for(var i = 2; i<11; i++){ %>
+                            <div class="carousel-item archivo">
+                                <input type="file" name="file" id="<% i %>" ><br><br>
+                                <input type="file" name="file" id="<% i %>" multiple><br><br>
+                            </div>
+                            <%}%>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicatorsImg" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicatorsImg" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
-            </div>     -->
+            </div>
+        </div>        
 
         <button type="submit" class="btn btn-primary m-3">
             SAVE PRODUCT

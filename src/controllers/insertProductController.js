@@ -24,12 +24,17 @@ controller.insert = (req, res) => {
     console.log(sizes)
     console.log(quantity)
 
-    
+    let images = [];
+    console.log('imagenes')
+    for (let i = 0; i < req.files.length; i++) {
+        image = req.files[i].buffer.toString('base64')
+        images.push(image)
+    }
+    console.log(images)
 
     req.getConnection((err, conn) =>{
         let idP;
-
-        let p;
+        console.log('******************************************CONNECTION AND INSERTION********************************************************');
         conn.query('INSERT INTO product set ?', [data], (err, products) => {
             if(err){
                 res.json(err);
@@ -40,13 +45,12 @@ controller.insert = (req, res) => {
                     }else{
                         idP = id[0].last_id;
                         console.log("ID of the last inserted product : " + idP);
-                        console.log("ID of the last inserted product 'out of the query' : "+idP);
                         for (let i = 0; i < cat.length; i++) {
                             conn.query('INSERT INTO product_catalogue (id_product, id_catalogue) VALUES (?,?);',[idP,parseInt(cat[i])], (err, pc) => {
                                 if(err){
                                     res.json(err);
                                 }else{
-                                    console.log('Inserted');
+                                    console.log('Inserted Catalogue');
                                 }
                             });
                         }
@@ -55,7 +59,16 @@ controller.insert = (req, res) => {
                                 if(err){
                                     res.json(err);
                                 }else{
-                                    console.log('Inserted');
+                                    console.log('Inserted Size');
+                                }
+                            });
+                        }
+                        for(let i = 0; i < images.length; i++){
+                            conn.query('INSERT INTO img (id_product,url) VALUES(?,?);',[idP,images[i]], (err, pc) => {
+                                if(err){
+                                    res.json(err);
+                                }else{
+                                    console.log('Inserted Img');
                                 }
                             });
                         }

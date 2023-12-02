@@ -1,17 +1,16 @@
 <%- include('partials/_header'); %>
 
 <div class = containerC id="contenedora">
-  
     <div class="contenidaImagen">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="/<%= data.i[0].url %>" class="d-block w-100" alt="...">
+              <img alt="Embedded Image" src='data:image/png;base64,<%= data.i[0].url %>'' class="d-block w-100" alt="...">
             </div>
             <%if (data.i) {%>
               <%for(var i = 1; i<data.i.length; i++){ %>
                 <div class="carousel-item">
-                  <img src="/<%= data.i[i].url %>" class="d-block w-100" alt="...">
+                  <img alt="Embedded Image" src='data:image/png;base64,<%= data.i[i].url %>' class="d-block w-100" alt="...">
                 </div>
               <%}%>
           <%}%>
@@ -44,7 +43,72 @@
               <a class="_b" href="">Solicitar</a>  
           </div>
     </div>  
-
 </div>
+
+        
+<section>
+        
+        <h2 class="font-weight-light title">You might also be interested</h2>
+        <br>
+        <br>
+        <div class="container text-center my-3">
+            <div class="row mx-auto my-auto justify-content-center">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="col-md-3">
+                                <div class="">
+                                    <div class="card-img img_carousel">
+                                        <a href="/product/<%= data.rp[0].id %>">
+                                            <img alt="Embedded Image" src='data:image/png;base64,<%= data.rp[0].url %>'class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <!-- <div class="card-img-overlay">Slide 1</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <%for(var i = 1; i<data.rp.length; i++){ %>
+                            <div class="carousel-item">
+                                <div class="col-md-3">
+                                    <div class="">
+                                        <div class="card-img img_carousel">
+                                            <a href="/product/<%= data.rp[i].id %>">
+                                                <img alt="Embedded Image" src='data:image/png;base64,<%= data.rp[i].url %>' class="img-fluid">
+                                            </a>
+                                        </div>
+                                        <!-- <div class="card-img-overlay">Slide 2</div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+</section>
+<script>
+  let items = document.getElementById('recipeCarousel').querySelectorAll('.carousel .carousel-item ')
+  console.log(items)
+
+  items.forEach((el) => {
+      const minPerSlide = 4
+      let next = el.nextElementSibling
+      for (var i=1; i<minPerSlide; i++) {
+          if (!next) {
+              // wrap carousel by using first child
+              next = items[0]
+          }
+          let cloneChild = next.cloneNode(true)
+          el.appendChild(cloneChild.children[0])
+          next = next.nextElementSibling
+      }
+  })
+</script>
 
 <%- include('partials/_footer'); %>
