@@ -3,7 +3,6 @@ body {
     width: 100%;
 }
 
-
 /* ................................................................ */
 .containerC {
     width : 100%;
@@ -105,6 +104,8 @@ h5{
     justify-content: center;
     text-align: center;
     padding: 50px;
+    overflow: hidden;
+    height: 500px;
 }
 .quantity{
     width: 75px;
@@ -136,10 +137,6 @@ h5{
     padding: 10px;
 }
 
-.img_carousel{
-    padding: 10px;
-  }
-
 .archivos{
     text-align: center;
     justify-content: center;
@@ -152,7 +149,7 @@ h5{
 }
 /* ................................................................ */
 
-/*  Carousel-1 */
+/*Carousel*/
 .carousel {
     max-height: 100%;
     max-width: 700px;
@@ -184,21 +181,10 @@ h5{
       background: #7d7d7d;
       opacity: 0.1;
   }
+/*Carousel*/
 
-  /* .btnC_{
-    text-decoration: none; 
-    color: rgb(0, 0, 0);
-    background-color: black;
-    border-radius: 30px;
-    width: 100%;
-} */
-.btnC_:hover{
-    background-color: rgb(255, 25, 25);
-    text-decoration: none;
-}
-/*  Carousel-1 */
 
-/* Carousel Bottom Product*/
+/* Carousel x4*/
 @media (max-width: 799px) {
     section .carousel-inner .carousel-item > div {
         display: none;
@@ -235,5 +221,4 @@ section .carousel-inner .carousel-item-prev {
         width:1000px;
     } 
 }
-
-/* Carousel Bottom Product */
+/* Carousel x4*/

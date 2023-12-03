@@ -74,10 +74,14 @@ controller.insert = (req, res) => {
                         }
                     }
                 });
+                res.redirect('/insertProduct');
             }
         });
         
     });
+
+
+
 };
 
 controller.select = (req, res)=>{

@@ -45,6 +45,7 @@ const typeRoutes = require('./routes/type')
 const insertProductRoutes = require('./routes/insertProduct')
 const catalogueRoutes = require('./routes/catalogue')
 const messageRoutes = require('./routes/message')
+const insertCatalogueRoutes = require('./routes/insertCatalogue')
 
 // setting
 app.set('port', process.env.PORT || 3000);
@@ -71,6 +72,7 @@ app.use('/type',typeRoutes)
 app.use('/insertProduct',insertProductRoutes)
 app.use('/catalogue',catalogueRoutes)
 app.use('/message',messageRoutes)
+app.use('/insertCatalogue',insertCatalogueRoutes)
 
 // static files  **********
 app.use(express.static(path.join(__dirname, 'public')));

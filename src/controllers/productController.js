@@ -5,7 +5,7 @@ controller.info = (req, res) =>{
     let p;
     let i;
     let s;
-    let rp;
+    let products;
     req.getConnection((err, conn)=> {
         conn.query('SELECT * FROM product WHERE id = ?',[id], (err, products) =>{
             if(err){
@@ -41,14 +41,14 @@ controller.info = (req, res) =>{
             if(err){
                 res.json(err);
             }else{
-                rp = randProducts
-                console.log(rp);
+                products = randProducts
+                console.log(products);
                 res.render('product', {
                     data: {
                         p: p,
                         i: i,
                         s: s,
-                        rp: rp
+                        products: products
                     }
                 });
             }

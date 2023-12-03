@@ -1,0 +1,57 @@
+<%- include('partials/_header'); %>
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>n</th>
+                        <th>ID</th>
+                        <th>Catalogue</th>
+                        <th>Img</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%if (data) {%>
+                        <%for(var i = 0; i<data.length; i++){ %>
+                            <tr>
+                                <td><%= (i+1) %></td>
+                                <td><%= data[i].id %></td>
+                                <td><%= data[i].name %></td>
+                                <td><%= data[i].imgUrl %></td>
+                                <td>
+                                    <a href="#" class="btn btn-danger">DELETE</a>
+                                    <a href="#" class="btn btn-info">UPDATE</a>
+                                </td>
+                            </tr>     
+                        <%}%>
+                    <%}%>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <form action="insertCatalogue/insert" method="POST" enctype="multipart/form-data">
+                        <div class="form-group m-3" >
+                            <input type="text" name="name" placeholder="Name" class="form-control">         
+                            
+                        </div>
+                        <div class="form-group m-3" >
+                            <input type="file" name="file" id="1" ><br><br>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-3">
+                            SAVE CATALOGUE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/_footer'); %>

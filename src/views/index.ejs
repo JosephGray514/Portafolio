@@ -20,7 +20,7 @@
 <%if (data.c) {%>
 
 
-        <h2 class="font-weight-light title"><%= data.c[4].name %></h2>
+        <h2 class="font-weight-light title"><%= data.c[0].name %></h2>
         <br>
         <br>
         <div class="container text-center my-3">
@@ -31,21 +31,21 @@
                             <div class="col-md-3">
                                 <div class="">
                                     <div class="card-img img_carousel">
-                                        <a href="/product/<%= data.p[4][0].id %>">
-                                            <img src="<%= data.p[4][0].url %>" class="img-fluid">
+                                        <a href="/product/<%= data.p[0][0].id %>">
+                                            <img alt="Embedded Image" src="data:image/png;base64,<%= data.p[0][0].url %>" class="img-fluid">
                                         </a>
                                     </div>
                                     <!-- <div class="card-img-overlay">Slide 1</div> -->
                                 </div>
                             </div>
                         </div>
-                        <%for(var i = 1; i<data.p[4].length; i++){ %>
+                        <%for(var i = 1; i<data.p[0].length; i++){ %>
                             <div class="carousel-item">
                                 <div class="col-md-3">
                                     <div class="">
                                         <div class="card-img img_carousel">
-                                            <a href="/product/<%= data.p[4][i].id %>">
-                                                <img src="<%= data.p[4][i].url %>" class="img-fluid">
+                                            <a href="/product/<%= data.p[0][i].id %>">
+                                                <img alt="Embedded Image" src="data:image/png;base64,<%= data.p[0][i].url %>" class="img-fluid">
                                             </a>
                                         </div>
                                         <!-- <div class="card-img-overlay">Slide 2</div> -->
@@ -81,7 +81,7 @@
                                 <div class="">
                                     <div class="card-img img_carousel">
                                         <a href="/catalogue/<%= data.c[0].id %>">
-                                            <img src="<%= data.c[0].imgUrl %>" class="img-fluid">
+                                            <img alt="Embedded Image" src="data:image/png;base64,<%= data.c[0].imgUrl %>" class="img-fluid">
                                         </a>
                                     </div>
                                     <!-- <div class="card-img-overlay">Slide 1</div> -->
@@ -94,7 +94,7 @@
                                     <div class="">
                                         <div class="card-img img_carousel">
                                             <a href="/catalogue/<%= data.c[i].id %>">
-                                                <img src="<%= data.c[i].imgUrl %>" class="img-fluid">
+                                                <img alt="Embedded Image" src="data:image/png;base64,<%= data.c[i].imgUrl %>" class="img-fluid">
                                             </a>
                                         </div>
                                         <!-- <div class="card-img-overlay">Slide 2</div> -->

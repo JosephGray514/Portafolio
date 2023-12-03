@@ -38,7 +38,7 @@
                     <div class="carousel-inner">
                             <div class="carousel-item active ">
                                 <%if (data.t) {%>                       
-                                    <div class="cont_sizes ">   
+                                    <div class="cont_sizes global">   
                                             <h6><%= data.t[0].name %></h6>                   
                                             <%for(var j = 0; j<data.a[0].length; j++){ %>
                                                 <div class="form-check form-check-inline ">
@@ -57,7 +57,7 @@
                     <%if (data.t) {%>
                         <%for(var i = 1; i<data.a.length; i++){ %>
                             <div class="carousel-item ">  
-                                <div class="cont_sizes ">  
+                                <div class="cont_sizes global">  
                                     <h6><%= data.t[i].name %></h6>               
                                     <%for(var j = 0; j<data.a[i].length; j++){ %>
                                         <div class="form-check form-check-inline  ">
